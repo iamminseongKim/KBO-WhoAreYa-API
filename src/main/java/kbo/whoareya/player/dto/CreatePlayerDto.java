@@ -18,4 +18,5 @@ public class CreatePlayerDto {
     private PlayerType type;
     private Position position;
     private int height;
+    private int backNumber;
 }

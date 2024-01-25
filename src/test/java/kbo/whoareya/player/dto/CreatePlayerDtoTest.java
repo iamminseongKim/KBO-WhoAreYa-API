@@ -45,16 +45,38 @@ class CreatePlayerDtoTest {
                 .team(team)
                 .position(Position.P)
                 .birthDate(LocalDate.of(1997, 7, 25))
+                .backNumber(99)
                 .height(176)
                 .name("김민성")
                 .build();
 
-        Long saveId = playerService.save(dto);
+        Long saveId = playerService.save(dto).getId();
 
         Team findTeam = teamService.findTeam(team.getId()).get();
 
         assertThat(team.getName()).isEqualTo(findTeam.getName());
         assertThat(saveId).isEqualTo(1L);
+
+    }
+
+    @Test
+    @DisplayName("플레이어 id로 찾기")
+    void findByPlayerId() {
+        CreateTeamDto SSG = CreateTeamDto.builder().name("SSG").build();
+        Team team = teamService.save(SSG);
+
+        CreatePlayerDto dto = CreatePlayerDto.builder()
+                .type(PlayerType.LEFT)
+                .team(team)
+                .position(Position.P)
+                .birthDate(LocalDate.of(1997, 7, 25))
+                .backNumber(99)
+                .height(176)
+                .name("김민성")
+                .build();
+
+        Player player = playerService.save(dto);
+        Player findPlayer = playerService.findPlayerById(player.getId()).get();
 
     }
 }

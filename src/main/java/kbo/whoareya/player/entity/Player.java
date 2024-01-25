@@ -24,7 +24,7 @@ public class Player {
 
     private String name;    // 이름
     private LocalDate birthDate;    // 생년월일
-
+    private int backNumber; // 등번호
     @Enumerated(STRING)
     private PlayerType playerType; // LEFT / RIGHT (왼손/오른손)
 
@@ -48,6 +48,7 @@ public class Player {
         player.height = dto.getHeight();
         player.team = dto.getTeam();
         player.playerType = dto.getType();
+        player.backNumber = dto.getBackNumber();
         return player;
     }
 
