@@ -1,4 +1,4 @@
-# jpa를 사용하여 kbo 버전  who are ay 만들기 위한 프로젝트.
+# jpa를 사용하여 kbo 버전  who are ya 만들기 위한 프로젝트.
 ![](https://i.imgur.com/59jvo84.png)
 > 출처 : 이스타 티비
 ## DB 설계 
