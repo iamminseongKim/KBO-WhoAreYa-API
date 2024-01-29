@@ -7,6 +7,9 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -19,8 +22,8 @@ public class Team {
     @Column(name = "team_name")
     private String name;
 
-    @OneToOne(mappedBy = "team")
-    private Player player;
+    // 단방향만 사용하겠음.
+    //private List<Player> playerList = new ArrayList<>();
 
     public static Team createTeam(CreateTeamDto dto) {
         Team team = new Team();

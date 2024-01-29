@@ -30,8 +30,8 @@ public class Player {
 
     private int height; // 키
 
-    @OneToOne(fetch = LAZY)
-    @JoinColumn(name = "team_id")
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "team_id")// 팀 : 선수 1 : N
     private Team team;
 
    /* @OneToOne(mappedBy = "player")
