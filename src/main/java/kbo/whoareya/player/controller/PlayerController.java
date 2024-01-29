@@ -1,11 +1,12 @@
 package kbo.whoareya.player.controller;
 
-import kbo.whoareya.player.dto.RandomPlayer;
+import kbo.whoareya.player.dto.PlayerInfoDto;
 import kbo.whoareya.player.dto.ResponseDto;
 import kbo.whoareya.player.service.PlayerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -17,7 +18,7 @@ public class PlayerController {
 
 
     @GetMapping("/api/v1/random-player")
-    public RandomPlayer getRandomPlayer() {
+    public PlayerInfoDto getRandomPlayer() {
         return playerService.findRandomPlayer();
     }
 
@@ -30,6 +31,26 @@ public class PlayerController {
                 .build();
     }
 
+
+    @GetMapping("/api/v1/submit/{randomId}/{userPlayerId}/{tryCount}")
+    public ResponseDto<Object> submitQuiz(@PathVariable("randomId") Long randomId,
+                                          @PathVariable("userPlayerId") Long userPlayerId,
+                                          @PathVariable("tryCount") int tryCount) throws Exception {
+
+        if (tryCount >= 8) {
+            return ResponseDto.builder()
+                    .status(200)
+                    .message("기회 X")
+                    .data(playerService.findPlayerById(randomId))
+                    .build();
+        }
+
+        return ResponseDto.builder()
+                .status(200)
+                .message("응답 성공")
+                .data(playerService.compareUserSubmittedPlayerAndRandomPlayer(userPlayerId, randomId))
+                .build();
+    }
         
 
 

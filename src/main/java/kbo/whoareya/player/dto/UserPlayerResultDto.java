@@ -7,6 +7,8 @@ import lombok.Getter;
 @Getter
 @Builder
 public class UserPlayerResultDto {
+
+    private boolean result;         // 정답인가 아닌가?
     private String teamName;        // 팀명
     private boolean teamCorrect;    // 팀이 일치 한가
     private String position;        // 포지션 명

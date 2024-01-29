@@ -76,7 +76,7 @@ class CreatePlayerDtoTest {
                 .build();
 
         Player player = playerService.save(dto);
-        Player findPlayer = playerService.findPlayerById(player.getId()).get();
+        //Player findPlayer = playerService.findPlayerById(player.getId());
 
     }
 }

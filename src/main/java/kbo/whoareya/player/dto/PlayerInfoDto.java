@@ -2,14 +2,10 @@ package kbo.whoareya.player.dto;
 
 import kbo.whoareya.player.entity.Player;
 import kbo.whoareya.player.entity.PlayerType;
-import kbo.whoareya.player.entity.Position;
 import lombok.Getter;
 
-import java.time.LocalDate;
-import java.time.Period;
-
 @Getter
-public class RandomPlayer {
+public class PlayerInfoDto {
 
     private Long id;
     private String name;
@@ -22,7 +18,7 @@ public class RandomPlayer {
 
 
 
-    public RandomPlayer(Player player) {
+    public PlayerInfoDto(Player player) {
         this.id = player.getId();
         this.backNumber = player.getBackNumber();
         this.teamName = player.getTeam().getName();
