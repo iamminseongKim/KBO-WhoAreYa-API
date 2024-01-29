@@ -6,12 +6,12 @@ import lombok.Setter;
 
 import static jakarta.persistence.FetchType.*;
 
-/*
+
 @Entity
 @Getter @Setter
 public class Profile {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "profile_id")
     private Long id;
 
@@ -29,4 +29,4 @@ public class Profile {
         return profile;
     }
 }
-*/
+

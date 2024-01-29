@@ -37,7 +37,7 @@ class CreatePlayerDtoTest {
     @DisplayName("플레이어 생성 해보기")
     void makePlayer() {
 
-        CreateTeamDto SSG = CreateTeamDto.builder().name("SSG").build();
+        CreateTeamDto SSG = new CreateTeamDto("SSG 랜더스");
         Team team = teamService.save(SSG);
 
         CreatePlayerDto dto = CreatePlayerDto.builder()
@@ -62,7 +62,7 @@ class CreatePlayerDtoTest {
     @Test
     @DisplayName("플레이어 id로 찾기")
     void findByPlayerId() {
-        CreateTeamDto SSG = CreateTeamDto.builder().name("SSG").build();
+        CreateTeamDto SSG = new CreateTeamDto("SSG 랜더스");
         Team team = teamService.save(SSG);
 
         CreatePlayerDto dto = CreatePlayerDto.builder()
