@@ -1,9 +1,8 @@
 package kbo.whoareya.player.service.impl;
 
-import kbo.whoareya.player.dto.ReturnRandomPlayerDto;
-import kbo.whoareya.player.entity.Player;
+import kbo.whoareya.player.dto.RandomPlayer;
+import kbo.whoareya.player.dto.UserPlayerResultDto;
 import kbo.whoareya.player.service.PlayerService;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -22,19 +20,29 @@ class PlayerServiceImplTestWithDB {
     @Autowired
     PlayerService playerService;
     @Test
-    public void findRandomPlayer() throws Exception {
+    void findRandomPlayer() throws Exception {
         //given
 
         //when
         for (int i=0; i < 10; i++) {
-            ReturnRandomPlayerDto randomPlayer = playerService.findRandomPlayer();
+            RandomPlayer randomPlayer = playerService.findRandomPlayer();
             System.out.println(randomPlayer);
         }
-
-
         //then
 
-
     }
+
+    @Test
+    void compareUserSubmittedPlayerAndRandomPlayerTest() throws Exception {
+        //given
+        RandomPlayer randomPlayer = playerService.findRandomPlayer();
+        //when
+        UserPlayerResultDto dto = playerService.compareUserSubmittedPlayerAndRandomPlayer(3L, randomPlayer.getId());
+        //UserPlayerResultDto dto2 = playerService.compareUserSubmittedPlayerAndRandomPlayer(4L, randomPlayer.getId());
+        //then
+        System.out.println(dto);
+       // System.out.println(dto2);
+    }
+
 
 }

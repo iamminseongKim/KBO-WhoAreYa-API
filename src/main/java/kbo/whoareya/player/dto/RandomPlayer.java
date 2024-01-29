@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.time.Period;
 
 @Getter
-public class ReturnRandomPlayerDto {
+public class RandomPlayer {
 
     private Long id;
     private String name;
@@ -22,39 +22,15 @@ public class ReturnRandomPlayerDto {
 
 
 
-    public ReturnRandomPlayerDto(Player player) {
+    public RandomPlayer(Player player) {
         this.id = player.getId();
         this.backNumber = player.getBackNumber();
         this.teamName = player.getTeam().getName();
-        this.position = setPosition(player.getPosition());
+        this.position = Player.setPosition(player.getPosition());
         this.type = player.getPlayerType();
         this.height = player.getHeight();
-        this.age = setAge(player);
+        this.age = Player.setAge(player);
         this.name = player.getName();
-    }
-
-    public static String setPosition(Position position) {
-        if (position.equals(Position.P))
-           return "투수";
-        if (position.equals(Position.IF))
-            return "내야수";
-        if (position.equals(Position.OF))
-            return "외야수";
-        if (position.equals(Position.C))
-            return "포수";
-
-        return null;
-    }
-
-
-    public static int setAge(Player player) {
-        return calculateAge(player.getBirthDate());
-    }
-
-    private static int calculateAge(LocalDate birthDay) {
-        LocalDate today = LocalDate.now();
-        Period period = Period.between(birthDay, today);
-        return period.getYears();
     }
 
     @Override

@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 import static jakarta.persistence.EnumType.*;
 import static jakarta.persistence.FetchType.*;
@@ -39,6 +40,29 @@ public class Player {
 
     @Enumerated(STRING)
     private Position position;
+
+    public static int setAge(Player player) {
+        return calculateAge(player.getBirthDate());
+    }
+
+    private static int calculateAge(LocalDate birthDay) {
+        LocalDate today = LocalDate.now();
+        Period period = Period.between(birthDay, today);
+        return period.getYears();
+    }
+
+    public static String setPosition(Position position) {
+        if (position.equals(Position.P))
+            return "투수";
+        if (position.equals(Position.IF))
+            return "내야수";
+        if (position.equals(Position.OF))
+            return "외야수";
+        if (position.equals(Position.C))
+            return "포수";
+
+        return null;
+    }
 
     public static Player CreatePlayer(CreatePlayerDto dto) {
         Player player = new Player();
