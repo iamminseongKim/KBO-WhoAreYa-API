@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PlayerRepository extends JpaRepository<Player, Long> {
 
-    @Query(value = "select * from player order by rand() limit 1", nativeQuery = true)
+    @Query(value = "SELECT p FROM Player p join fetch p.team t ORDER BY RAND() LIMIT 1")
     Player findPlayerByRandom();
 }

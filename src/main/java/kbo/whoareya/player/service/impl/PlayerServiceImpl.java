@@ -1,6 +1,7 @@
 package kbo.whoareya.player.service.impl;
 
 import kbo.whoareya.player.dto.CreatePlayerDto;
+import kbo.whoareya.player.dto.ReturnRandomPlayerDto;
 import kbo.whoareya.player.entity.Player;
 import kbo.whoareya.player.repository.PlayerRepository;
 import kbo.whoareya.player.service.PlayerService;
@@ -26,5 +27,11 @@ public class PlayerServiceImpl implements PlayerService {
     @Override
     public Optional<Player> findPlayerById(Long id) {
         return playerRepository.findById(id);
+    }
+
+    @Override
+    public ReturnRandomPlayerDto findRandomPlayer() {
+
+        return new ReturnRandomPlayerDto(playerRepository.findPlayerByRandom());
     }
 }
