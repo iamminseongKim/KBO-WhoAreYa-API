@@ -32,31 +32,31 @@ def positon_make(position) :
 def type_make(type) :
     
     if type == '우투우타':
-        return 0
-    elif type == '우투좌타':
         return 1
-    elif type == '우언우타':
+    elif type == '우투좌타':
         return 2
-    elif type == '우언좌타':
+    elif type == '우언우타':
         return 3
-    elif type == '좌투우타':
+    elif type == '우언좌타':
         return 4
-    elif type == '좌투좌타':
+    elif type == '좌투우타':
         return 5
-    elif type == '좌언우타':
+    elif type == '좌투좌타':
         return 6
-    elif type == '좌언좌타':
+    elif type == '좌언우타':
         return 7
-    elif type == '우투양타':
+    elif type == '좌언좌타':
         return 8
-    elif type == '좌투양타':
+    elif type == '우투양타':
         return 9
-    elif type == '양투우타':
+    elif type == '좌투양타':
         return 10
-    elif type == '양투좌타':
+    elif type == '양투우타':
         return 11
-    else :  #양투양타
+    elif type == '양투좌타':
         return 12
+    else :  #양투양타
+        return 13
     
 
 options = Options()
