@@ -26,7 +26,9 @@ public class Player {
     private String name;    // 이름
     private LocalDate birthDate;    // 생년월일
     private int backNumber; // 등번호
-    @Enumerated(STRING)
+
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "type_id")
     private PlayerType playerType; // LEFT / RIGHT (왼손/오른손)
 
     private int height; // 키
@@ -35,8 +37,6 @@ public class Player {
     @JoinColumn(name = "team_id")// 팀 : 선수 1 : N
     private Team team;
 
-   /* @OneToOne(mappedBy = "player")
-    private Profile profile;*/
 
     @Enumerated(STRING)
     private Position position;

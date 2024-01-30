@@ -12,7 +12,7 @@ public class PlayerInfoDto {
     private String teamName;
     private int backNumber;
     private String position;
-    private PlayerType type;
+    private String type;
     private int height;
     private int age;
 
@@ -23,7 +23,7 @@ public class PlayerInfoDto {
         this.backNumber = player.getBackNumber();
         this.teamName = player.getTeam().getName();
         this.position = Player.setPosition(player.getPosition());
-        this.type = player.getPlayerType();
+        this.type = player.getPlayerType().getName();
         this.height = player.getHeight();
         this.age = Player.setAge(player);
         this.name = player.getName();

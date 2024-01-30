@@ -41,7 +41,7 @@ class CreatePlayerDtoTest {
         Team team = teamService.save(SSG);
 
         CreatePlayerDto dto = CreatePlayerDto.builder()
-                .type(PlayerType.LEFT)
+                //.type(PlayerType.LEFT)
                 .team(team)
                 .position(Position.P)
                 .birthDate(LocalDate.of(1997, 7, 25))
@@ -66,7 +66,7 @@ class CreatePlayerDtoTest {
         Team team = teamService.save(SSG);
 
         CreatePlayerDto dto = CreatePlayerDto.builder()
-                .type(PlayerType.LEFT)
+                //.type(PlayerType.LEFT)
                 .team(team)
                 .position(Position.P)
                 .birthDate(LocalDate.of(1997, 7, 25))

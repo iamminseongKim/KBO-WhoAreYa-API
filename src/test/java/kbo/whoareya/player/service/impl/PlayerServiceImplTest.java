@@ -42,7 +42,7 @@ class PlayerServiceImplTest {
         CreatePlayerDto dto = CreatePlayerDto.builder()
                 .name("김민성")                                            // 이름
                 .team(team)                                               // 팀 객체
-                .type(PlayerType.LEFT)                                    // 왼손
+                //.type(PlayerType.LEFT)                                    // 왼손
                 .backNumber(1)                                            // 등번호
                 .height(176)                                              // 키
                 .birthDate(LocalDate.of(1997,7,25)) // 생년월일

@@ -2,7 +2,6 @@ package kbo.whoareya.player.dto;
 
 import kbo.whoareya.player.entity.PlayerType;
 import kbo.whoareya.player.entity.Position;
-import kbo.whoareya.player.entity.Profile;
 import kbo.whoareya.team.entity.Team;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,5 +19,4 @@ public class CreatePlayerDto {
     private Position position;
     private int height;
     private int backNumber;
-    private Profile profile;
 }
