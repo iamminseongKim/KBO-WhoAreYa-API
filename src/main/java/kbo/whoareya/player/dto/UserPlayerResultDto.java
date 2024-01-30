@@ -14,12 +14,12 @@ public class UserPlayerResultDto {
     private String position;        // 포지션 명
     private boolean positionCorrect;    // 포지션이 일치 한가
     private int age;                // 나이
-    private int ageDiff;            // 나이 차이
+    private String ageDiff;            // 나이 차이
 
     private int backNumber;         // 등번호
-    private int backNumberDiff;     // 등번호 차이
+    private String backNumberDiff;     // 등번호 차이
     private int height;             // 키
-    private int heightDiff;         // 키 차이
+    private String heightDiff;         // 키 차이
 
     private String handType;         // 타입 (왼손/오른손)
     private boolean handTypeCorrect;

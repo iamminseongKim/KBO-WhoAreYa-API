@@ -63,7 +63,20 @@ public class PlayerServiceImpl implements PlayerService {
         return comparePlayerButDiff(userPlayer, randomPlayer);
     }
 
+    private String settingDiffUpDown(int result) {
+        if (result > 0)
+            return "UP";
+        else if (result < 0)
+            return "DOWN";
+        else
+            return "0";
+    }
+
     private UserPlayerResultDto comparePlayerButDiff(Player userPlayer, Player randomPlayer) {
+
+        String ageDiff = settingDiffUpDown(Player.setAge(randomPlayer) - Player.setAge(userPlayer));
+        String backNumberDiff = settingDiffUpDown(randomPlayer.getBackNumber() - userPlayer.getBackNumber());
+        String heightDiff = settingDiffUpDown(randomPlayer.getHeight() - userPlayer.getHeight());
 
         return UserPlayerResultDto.builder()
                 .result(false)
@@ -71,11 +84,11 @@ public class PlayerServiceImpl implements PlayerService {
                 .teamName(userPlayer.getTeam().getName())
                 .teamCorrect(userPlayer.getTeam() == randomPlayer.getTeam())
                 .age(Player.setAge(userPlayer))
-                .ageDiff(Player.setAge(userPlayer) - Player.setAge(randomPlayer))
+                .ageDiff(ageDiff)
                 .backNumber(userPlayer.getBackNumber())
-                .backNumberDiff(userPlayer.getBackNumber() - randomPlayer.getBackNumber())
+                .backNumberDiff(backNumberDiff)
                 .height(userPlayer.getHeight())
-                .heightDiff(userPlayer.getHeight() - randomPlayer.getHeight())
+                .heightDiff(heightDiff)
                 .handType(String.valueOf(userPlayer.getPlayerType()))
                 .handTypeCorrect(userPlayer.getPlayerType() == randomPlayer.getPlayerType())
                 .position(Player.setPosition(userPlayer.getPosition()))
@@ -96,11 +109,11 @@ public class PlayerServiceImpl implements PlayerService {
                 .teamName(userPlayer.getTeam().getName())
                 .teamCorrect(true)
                 .age(Player.setAge(userPlayer))
-                .ageDiff(0)
+                .ageDiff("0")
                 .backNumber(userPlayer.getBackNumber())
-                .backNumberDiff(0)
+                .backNumberDiff("0")
                 .height(userPlayer.getHeight())
-                .heightDiff(0)
+                .heightDiff("0")
                 .handType(String.valueOf(userPlayer.getPlayerType()))
                 .handTypeCorrect(true)
                 .position(Player.setPosition(userPlayer.getPosition()))

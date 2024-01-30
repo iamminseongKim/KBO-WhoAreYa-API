@@ -32,7 +32,7 @@ public class PlayerController {
     }
 
 
-    @GetMapping("/api/v1/submit/{randomId}/{userPlayerId}/{tryCount}")
+    @GetMapping("/api/v2/submit/{randomId}/{userPlayerId}/{tryCount}")
     public ResponseDto<Object> submitQuiz(@PathVariable("randomId") Long randomId,
                                           @PathVariable("userPlayerId") Long userPlayerId,
                                           @PathVariable("tryCount") int tryCount) throws Exception {
