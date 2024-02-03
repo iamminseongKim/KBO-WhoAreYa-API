@@ -1,5 +1,6 @@
 package kbo.whoareya.player.service.impl;
 
+import kbo.whoareya.player.dto.NameSearchPlayerDto;
 import kbo.whoareya.player.dto.PlayerInfoDto;
 import kbo.whoareya.player.dto.UserPlayerResultDto;
 import kbo.whoareya.player.service.PlayerService;
@@ -11,6 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -52,12 +55,25 @@ class PlayerServiceImplTestWithDB {
     @DisplayName("같은 선수이면 결과가 true 인지 체크")
     void compareUserSubmittedPlayerTest() throws Exception {
         //given
-        PlayerInfoDto playerInfoDto = playerService.findRandomPlayer();
+        //PlayerInfoDto playerInfoDto = playerService.findRandomPlayer();
         //when
         UserPlayerResultDto dto = playerService.compareUserSubmittedPlayerAndRandomPlayer(3L, 3L);
         //UserPlayerResultDto dto2 = playerService.compareUserSubmittedPlayerAndRandomPlayer(4L, randomPlayer.getId());
         //then
        assertThat(dto.isResult()).isEqualTo(true);
+    }
+
+    @Test
+    @DisplayName("이름으로 검색")
+    void searchPlayerForName() throws Exception {
+        //given
+        String name = "민";
+        //when
+        List<NameSearchPlayerDto> playerForName = playerService.findPlayerForName(name);
+        //then
+        for (NameSearchPlayerDto playerDto : playerForName) {
+            System.out.println(playerDto);
+        }
     }
 
 }

@@ -132,4 +132,14 @@ class PlayerControllerTest {
                 .andExpect(jsonPath("$.data.playerName").value("김민성"));
     }
 
+    @Test
+    @DisplayName("플레이어 이름검색")
+    void searchPlayerForName() throws Exception {
+        //given
+
+        //when
+
+        //then
+    }
+
 }

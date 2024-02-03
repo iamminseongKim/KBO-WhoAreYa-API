@@ -1,6 +1,7 @@
 package kbo.whoareya.player.service.impl;
 
 import kbo.whoareya.player.dto.CreatePlayerDto;
+import kbo.whoareya.player.dto.NameSearchPlayerDto;
 import kbo.whoareya.player.dto.PlayerInfoDto;
 import kbo.whoareya.player.dto.UserPlayerResultDto;
 import kbo.whoareya.player.entity.Player;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -28,7 +30,7 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public PlayerInfoDto findPlayerById(Long id) {
-        return new PlayerInfoDto(playerRepository.findById(id).get());
+        return new PlayerInfoDto(playerRepository.findPlayerById(id).get());
     }
 
     @Override
@@ -41,10 +43,10 @@ public class PlayerServiceImpl implements PlayerService {
 
         // 1. id 서로 일치 시 → 정답
         if (Objects.equals(userPlayerId, randomPlayerId))
-            return comparePlayerAndCorrect(playerRepository.findById(userPlayerId));
+            return comparePlayerAndCorrect(playerRepository.findPlayerById(userPlayerId));
 
         // 2. id 서로 불일치 시 → 값 비교
-        Optional<Player> userPlayerOpt = playerRepository.findById(userPlayerId);
+        Optional<Player> userPlayerOpt = playerRepository.findPlayerById(userPlayerId);
         Player userPlayer;
 
         if (userPlayerOpt.isPresent())
@@ -52,7 +54,7 @@ public class PlayerServiceImpl implements PlayerService {
         else
             throw new IllegalStateException("사용자가 제출한 선수의 id 가 조회 불가");
 
-        Optional<Player> randomPlayerOpt = playerRepository.findById(randomPlayerId);
+        Optional<Player> randomPlayerOpt = playerRepository.findPlayerById(randomPlayerId);
 
         Player randomPlayer;
         if (randomPlayerOpt.isPresent())
@@ -120,5 +122,12 @@ public class PlayerServiceImpl implements PlayerService {
                 .position(Player.setPosition(userPlayer.getPosition()))
                 .positionCorrect(true)
                 .build();
+    }
+
+    @Override
+    public List<NameSearchPlayerDto> findPlayerForName(String name) {
+        return playerRepository.findByName(name)
+                .stream().map(NameSearchPlayerDto::new)
+                .toList();
     }
 }
