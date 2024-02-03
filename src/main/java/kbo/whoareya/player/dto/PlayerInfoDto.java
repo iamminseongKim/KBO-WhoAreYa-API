@@ -3,8 +3,9 @@ package kbo.whoareya.player.dto;
 import kbo.whoareya.player.entity.Player;
 import kbo.whoareya.player.entity.PlayerType;
 import lombok.Getter;
+import lombok.Setter;
 
-@Getter
+@Getter @Setter
 public class PlayerInfoDto {
 
     private Long id;

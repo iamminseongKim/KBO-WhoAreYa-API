@@ -37,7 +37,7 @@ public class PlayerController {
                                           @PathVariable("userPlayerId") Long userPlayerId,
                                           @PathVariable("tryCount") int tryCount) throws Exception {
 
-        if (tryCount >= 8) {
+        if (tryCount > 8) {
             return ResponseDto.builder()
                     .status(200)
                     .message("기회 X")

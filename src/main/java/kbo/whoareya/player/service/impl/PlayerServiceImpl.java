@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Objects;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -39,7 +40,7 @@ public class PlayerServiceImpl implements PlayerService {
     public UserPlayerResultDto compareUserSubmittedPlayerAndRandomPlayer(Long userPlayerId, Long randomPlayerId) throws Exception{
 
         // 1. id 서로 일치 시 → 정답
-        if (userPlayerId == randomPlayerId)
+        if (Objects.equals(userPlayerId, randomPlayerId))
             return comparePlayerAndCorrect(playerRepository.findById(userPlayerId));
 
         // 2. id 서로 불일치 시 → 값 비교
