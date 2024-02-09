@@ -8,6 +8,7 @@ import java.time.LocalDate;
 @Getter
 public class NameSearchPlayerDto {
 
+    private final Long playerId;
     private final String playerName;
     private final String teamName;
     private final int teamId;
@@ -15,19 +16,12 @@ public class NameSearchPlayerDto {
 
 
     public NameSearchPlayerDto(Player player) {
+        this.playerId = player.getId();
         this.playerName = player.getName();
         this.teamName = player.getTeam().getName();
         this.teamId = player.getTeam().getId();
         this.birtDate = player.getBirthDate();
     }
 
-    @Override
-    public String toString() {
-        return "NameSearchPlayerDto{" +
-                "playerName='" + playerName + '\'' +
-                ", teamName='" + teamName + '\'' +
-                ", teamId=" + teamId +
-                ", birtDate=" + birtDate +
-                '}';
-    }
+
 }
